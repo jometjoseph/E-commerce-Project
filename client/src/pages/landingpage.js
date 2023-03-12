@@ -4,9 +4,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import  Button  from '@mui/material/Button';
 import { Rating } from "@mui/material";
+// import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Landing() {
   const [products, setProducts] = useState(null);
+  // const navigate = useNavigate();
+
+  // const navigates = () =>{
+  //     navigate('/viewinfo');
+  // }
 
   useEffect(() => {
     axios
@@ -34,7 +42,7 @@ function Landing() {
             {products &&
               products.map((product, index) => {
                 return (
-                  <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                  <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" key={product.id}>
                     <div class="card">
                       <div class="d-flex justify-content-between p-3">
                         <p class="lead mb-0">Today's Offer</p>
@@ -60,7 +68,11 @@ function Landing() {
                         </div>
                         <Rating name="size-medium" defaultValue={product.rating.rate} />
                       </div>
-                      <Button variant="contained" color="secondary">View Info</Button><br></br>
+                      {/* <Button variant="contained" color="secondary" onClick={`/viewinfo/${product.id}`}>View Info</Button> */}
+                      {/* <Link href="/viewinfo">viewinfo</Link> */}
+                      <Link to={`/viewinfo/${product.id}`}>viewinfo</Link>
+                      {/* <a href="/viewinfoo">viewinfo</a> */}
+                      <br></br>
                       <Button variant="contained" color="primary">Add to Cart</Button>
                     </div>
                   </div>
