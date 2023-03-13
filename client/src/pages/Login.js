@@ -58,7 +58,7 @@ function Login() {
             <div class="card" style={{ borderradius: '1rem' }}>
               <div class="row g-0">
                 <div class="col-md-6 col-lg-5 d-none d-md-block">
-                  <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1780&q=80"
+                  <img src="https://media.istockphoto.com/id/1400086779/photo/interior-of-charity-shop-or-thrift-store-selling-used-and-sustainable-clothing-and-household.jpg?b=1&s=170667a&w=0&k=20&c=hpH8Y2uZONcEh-lDxP_i5yYOd1cKRyFIi6ALsId7byo="
                     alt="login form" class="img-fluid" style={{ borderradius: '1rem 0 0 1rem' }} />
                 </div>
                 <div class="col-md-6 col-lg-7 d-flex align-items-center">
