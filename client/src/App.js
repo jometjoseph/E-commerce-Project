@@ -1,3 +1,5 @@
+import React from "react"
+import Login from "./component/Login";
 // import logo from './logo.svg';
 import './App.css';
 import Landing from './pages/landingpage';
@@ -11,7 +13,8 @@ function App() {
      {/* <Outlet/> */}
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Landing/>}></Route>
+        <Route path='/' element={<Login/>}></Route>
+        <Route path='/home' element={<Landing/>}></Route>       
         <Route path='/viewinfo/:id' element={<ViewInfo/>}></Route>
       </Routes>
     </BrowserRouter>
