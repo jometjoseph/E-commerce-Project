@@ -3,9 +3,9 @@ import "../pages/landingpage.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import  Button  from '@mui/material/Button';
+import ButtonGroup from "@mui/material/ButtonGroup";
 import { Rating } from "@mui/material";
-// import Link from "@mui/material/Link";
-import { Link } from "react-router-dom";
+import Link from "@mui/material/Link";
 // import { useNavigate } from "react-router-dom";
 
 function Landing() {
@@ -42,7 +42,7 @@ function Landing() {
             {products &&
               products.map((product, index) => {
                 return (
-                  <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" key={product.id}>
+                  <div class="col-md-6 col-lg-3 mb-4 mb-lg-0" key={product.id}>
                     <div class="card">
                       <div class="d-flex justify-content-between p-3">
                         <p class="lead mb-0">Today's Offer</p>
@@ -64,16 +64,14 @@ function Landing() {
                         </div>
 
                         <div class="d-flex justify-content-between mb-3">
-                          <h5 class="mb-0">{product.title}</h5>
+                          <h5 class="text-truncate mb-4 mb-md-0">{product.title}</h5>
                         </div>
                         <Rating name="size-medium" defaultValue={product.rating.rate} />
                       </div>
-                      {/* <Button variant="contained" color="secondary" onClick={`/viewinfo/${product.id}`}>View Info</Button> */}
-                      {/* <Link href="/viewinfo">viewinfo</Link> */}
-                      <Link to={`/viewinfo/${product.id}`}>viewinfo</Link>
-                      {/* <a href="/viewinfoo">viewinfo</a> */}
-                      <br></br>
+                      <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                      <Button variant="outlined" color="secondary"><Link href={`/viewinfo/${product.id}`}>viewdetails</Link></Button>
                       <Button variant="contained" color="primary">Add to Cart</Button>
+                      </ButtonGroup>
                     </div>
                   </div>
                 );
