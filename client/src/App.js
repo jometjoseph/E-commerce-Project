@@ -2,6 +2,8 @@ import React from "react"
 import Login from "./component/Login";
 // import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar';
+import SearchBox from './components/SearchBox';
 import Landing from './pages/landingpage';
 import ViewInfo from './pages/viewinfo';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -18,7 +20,6 @@ function App() {
         <Route path='/viewinfo/:id' element={<ViewInfo/>}></Route>
       </Routes>
     </BrowserRouter>
-
     </div>
   );
 }
