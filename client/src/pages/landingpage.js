@@ -2,9 +2,8 @@ import React from "react";
 import "../pages/landingpage.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Button from '@mui/material/Button';
 import { ButtonGroup, FormControl, InputLabel, MenuItem, Rating, Select } from "@mui/material";
-// import Link from "@mui/material/Link";
+//import Link from "@mui/material/Link";
 import { Link } from "react-router-dom";
 import DrawerAppBar from "../components/NavBar";
 import { getToken } from "../utils/tokenHelper";
@@ -15,6 +14,8 @@ import { faTshirt, faFemale, faLaptop, faGem, faMagnifyingGlass, faStore } from 
 import { toast, ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux"
 import { updateCart,cartProduct } from "../components/Redux/cartslice";
+import  Button  from '@mui/material/Button';
+import { Rating } from "@mui/material";
 // import { useNavigate } from "react-router-dom";
 
 function Landing() {
@@ -265,6 +266,26 @@ function Landing() {
                             </ButtonGroup>
                           </div>
                         </div>
+
+     {/* <section style={{ backgroundColor: "#eee" }}>
+        <div class="container py-5">
+          <div class="row">
+            {products &&
+              products.map((product, index) => {
+                return (
+                  <div class="col-md-6 col-lg-3 mb-4 mb-lg-0" key={product.id}>
+                    <div class="card">
+                      <div class="d-flex justify-content-between p-3">
+                        <p class="lead mb-0">Today's Offer</p>
+                      </div>
+                      <div className="ratio ratio-4x3">
+                      <img
+                        src={product.image}
+                        class="img-fluid"
+                        alt="Laptop"
+                      /> */}
+                      
+                      
                       </div>
                     </div>
                   );
@@ -314,13 +335,20 @@ function Landing() {
                               </>}
                             </ButtonGroup>
                           </div>
+                          
+                        {/* <div class="d-flex justify-content-between mb-3">
+                          <h5 class="text-truncate mb-4 mb-md-0">{product.title}</h5> */}
                         </div>
                       </div>
+
+                      {/*     <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                      <Button variant="outlined" color="secondary"><Link href={`/viewinfo/${product.id}`}>viewdetails</Link></Button>
+                      <Button variant="contained" color="primary">Add to Cart</Button>
+                      </ButtonGroup>   */}
+
                     </div>
                   );
                 }) )}
-
-
 
             </div>
           </div>
