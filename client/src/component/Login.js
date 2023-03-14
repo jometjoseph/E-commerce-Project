@@ -8,6 +8,8 @@ import axios from "axios"
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getToken, setToken } from '../utils/tokenHelper';
+import { useNavigate } from 'react-router-dom';
 
 const schema = yup.object().shape({
   username: yup
@@ -20,6 +22,7 @@ const schema = yup.object().shape({
     .required('* Password is required')
 });
 function Login() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -34,14 +37,20 @@ function Login() {
       })
         .then((res) => {
           console.log(res.data.token);
-          localStorage.setItem('token', res.data.token);
-          const token = localStorage.getItem('token');
+          setToken(res.data.token)
+          // localStorage.setItem('token', res.data.token);
+          // const token = localStorage.getItem('token');
+          const token = getToken();
           console.log("token stored is ", token);
+          // console.log('Login successful!');
+          toast.success('login success', {
+            position: toast.POSITION.TOP_CENTER
+          });
+          if(token){
+            navigate('/');
+          }
         })
-      console.log('Login successful!');
-      toast.success('login success', {
-        position: toast.POSITION.TOP_CENTER
-      });
+
     } catch (error) {
       console.log('Login Failed!')
       toast.error('login failed', {
@@ -66,11 +75,11 @@ function Login() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <h4 class="fw-normal mb-3 pb-3" style={{ letterspacing: '2px' }}>Sign into your account</h4>
                       <div class="form-outline mb-4">
-                        <TextField id="outlined-basic" label="User Name" variant="outlined" fullWidth="10vw" {...register("username", { required: true, maxLength: 50 })} onChange={(event) => setUsername(event.target.value)} />
+                        <TextField id="outlined-basic-user" label="User Name" variant="outlined" fullWidth="10vw" {...register("username", { required: true, maxLength: 50 })} onChange={(event) => setUsername(event.target.value)} />
                         <div id='username' className='form-text text-danger'>{errors.username?.message}</div>
                       </div>
                       <div class="form-outline mb-4">
-                        <TextField type="password" id="outlined-basic" label="password " variant="outlined" fullWidth="10vw" {...register("password", { required: true, maxLength: 50 })} onChange={(event) => setPassword(event.target.value)} />
+                        <TextField type="password" id="outlined-basic-pssd" label="password " variant="outlined" fullWidth="10vw" {...register("password", { required: true, maxLength: 50 })} onChange={(event) => setPassword(event.target.value)} />
                         <div id='emailHelp' className='form-text text-danger'>{errors.password?.message}</div>
                       </div>
                       <div class="pt-1 mb-4">

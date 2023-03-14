@@ -17,7 +17,10 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
-import { getToken } from '../utils/tokenHelper';
+import { getToken, removeToken } from '../utils/tokenHelper';
+import { Link, useNavigate } from 'react-router-dom';
+import SearchBox from './SearchBox';
+import { useSelector } from 'react-redux';
 
 const drawerWidth = 240;
 
@@ -25,11 +28,18 @@ const drawerWidth = 240;
 function DrawerAppBar(props) {
 const token = getToken();
 const [navItems, setNavItems] = React.useState(['Login']);
+const navigate = useNavigate();
+const count = useSelector(state => state.carts.cart);
 function navbarSetter(){
   if(token){
+    console.log("token is ",token);
     setNavItems(['Home','About','Logout']);
   }
 }
+
+React.useEffect(() => {
+  navbarSetter();
+}, []);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -37,6 +47,22 @@ function navbarSetter(){
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  function Logout(){
+    console.log("logging out");
+    removeToken();
+    navigate('/login');
+
+  }
+
+  function Login(){
+    navigate('/login');
+  }
+  function Home(){
+    navigate('/');
+  }
+  function Cart(){
+    navigate('/cart');
+  }
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -80,12 +106,48 @@ function navbarSetter(){
            E-commerce
           </Typography>
           
+          {/* <div class="input-group"> */}
+              {/* <div class="form-outline text-center">
+                <input type="search" id="form1" class="form-control" placeholder="Search"/>
+                <label class="form-label" for="form1"></label>
+              </div> */}
+              {/* <button type="button" class="btn btn-primary">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </button> */}
+            {/* </div> */}
+
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {/* {navItems.map((item) => ( */}
-              <Button key='Login' sx={{ color: '#fff' }}>
+            {token && <>
+
+              <Button key='home' sx={{ color: '#fff' }} onClick={Home}>
+               Home
+              </Button>
+              <Button key='cart' sx={{ color: '#fff' }} onClick={Cart}>
+              <p className='bg-danger fs-6 rounded-circle text-light text-justify'><span className='text-danger'>..</span>{count}
+              <span className='text-danger'>..</span></p>
+               Cart
+              </Button>
+              <Button key='about' sx={{ color: '#fff' }} >
+               About
+              </Button>
+              <Button key='logout' sx={{ color: '#ffc107' }} onClick={Logout}>
+               Logout
+              </Button>
+            </>}
+            {!token && <>
+              <Button key='home' variant="contained" color="success" sx={{ color: '#fff' }} onClick={Login} >
                 Login
               </Button>
-            {/* ))} */}
+            </>}
+
+            {/* {navItems.map((item) => (
+              
+              <Button key={item} sx={{ color: '#fff' }} 
+              >
+               {item}
+              </Button>
+              
+           ))}  */}
           </Box>
         </Toolbar>
       </AppBar>
@@ -104,8 +166,11 @@ function navbarSetter(){
           {drawer}
         </Drawer>
       </Box>
+
       
     </Box>
+    
+
   );
 }
 
