@@ -15,7 +15,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux"
 import { updateCart,cartProduct } from "../components/Redux/cartslice";
 import  Button  from '@mui/material/Button';
-import { Rating } from "@mui/material";
+// import { Rating } from "@mui/material";
 // import { useNavigate } from "react-router-dom";
 
 function Landing() {
