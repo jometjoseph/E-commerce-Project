@@ -46,6 +46,7 @@ function Login() {
             navigate('/');
           }
         })
+
     } catch (error) {
       console.log('Login Failed!')
       toast.error('Invalid username and password', {
