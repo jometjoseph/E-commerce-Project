@@ -47,22 +47,6 @@ function Login() {
             navigate('/');
           }
         })
-
-          setToken(res.data.token)
-          // localStorage.setItem('token', res.data.token);
-          // const token = localStorage.getItem('token');
-          const token = getToken();
-          console.log("token stored is ", token);
-          // console.log('Login successful!');
-          toast.success('login success', {
-            position: toast.POSITION.TOP_CENTER
-          });
-          if(token){
-            navigate('/');
-          }
-        })
-
-
     } catch (error) {
       console.log('Login Failed!')
       toast.error('login failed', {
