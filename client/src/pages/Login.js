@@ -30,13 +30,24 @@ function Login() {
   });
   const onSubmit = async (event) => {
     try {
-      // event.preventDefault();
+
       const response = await axios.post('https://fakestoreapi.com/auth/login', {
         username: username,
         password: password
       })
         .then((res) => {
           console.log(res.data.token);
+          setToken(res.data.token);
+          const token = getToken();
+          console.log("token stored is ", token);
+          toast.success('login success', {
+            position: toast.POSITION.TOP_CENTER
+          });
+          if (token) {
+            navigate('/');
+          }
+        })
+
           setToken(res.data.token)
           // localStorage.setItem('token', res.data.token);
           // const token = localStorage.getItem('token');
@@ -50,6 +61,7 @@ function Login() {
             navigate('/');
           }
         })
+
 
     } catch (error) {
       console.log('Login Failed!')
@@ -99,7 +111,6 @@ function Login() {
   )
 }
 export default Login
-
 
 
 

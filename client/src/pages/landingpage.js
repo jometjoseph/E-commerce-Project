@@ -3,7 +3,6 @@ import "../pages/landingpage.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ButtonGroup, FormControl, InputLabel, MenuItem, Rating, Select } from "@mui/material";
-//import Link from "@mui/material/Link";
 import { Link } from "react-router-dom";
 import DrawerAppBar from "../components/NavBar";
 import { getToken } from "../utils/tokenHelper";

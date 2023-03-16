@@ -14,11 +14,10 @@ export const cartslice = createSlice({
       console.log("added product is",action.payload);
       state.products.push(action.payload)
     },
-    removeItem: (state, action) => {
+    removeItem: ( state, action) => {
       console.log(action);
       state.products.splice(action.payload,1);
-      state.cart = state.cart-1;  
-    
+      state.cart = state.cart-1; 
     },
   }
 });
