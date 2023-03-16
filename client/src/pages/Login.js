@@ -14,11 +14,11 @@ import { useNavigate } from 'react-router-dom';
 const schema = yup.object().shape({
   username: yup
     .string()
-    .min(5, '* username not valid')
+    .min(6, '* invalid username ')
     .required('* username is required'),
   password: yup
     .string()
-    .min(5, '* Password not valid')
+    .min(6, '* invalid Password ')
     .required('* Password is required')
 });
 function Login() {
@@ -30,7 +30,6 @@ function Login() {
   });
   const onSubmit = async (event) => {
     try {
-
       const response = await axios.post('https://fakestoreapi.com/auth/login', {
         username: username,
         password: password
@@ -47,25 +46,9 @@ function Login() {
             navigate('/');
           }
         })
-
-          setToken(res.data.token)
-          // localStorage.setItem('token', res.data.token);
-          // const token = localStorage.getItem('token');
-          const token = getToken();
-          console.log("token stored is ", token);
-          // console.log('Login successful!');
-          toast.success('login success', {
-            position: toast.POSITION.TOP_CENTER
-          });
-          if(token){
-            navigate('/');
-          }
-        })
-
-
     } catch (error) {
       console.log('Login Failed!')
-      toast.error('login failed', {
+      toast.error('Invalid username and password', {
         position: toast.POSITION.TOP_CENTER
       });
       console.log(error);

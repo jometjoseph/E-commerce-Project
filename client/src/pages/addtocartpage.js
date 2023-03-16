@@ -63,7 +63,7 @@ function Addtocart() {
                               </button>
                             </div>
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6 class="mb-0">€ {products.price}</h6>
+                              <h5 class="mb-0">€ {products.price}</h5>
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                               <Button variant="contained" sx={{ bgcolor: 'red' }} onClick={() => { remove(index) }} > DELETE </Button>
