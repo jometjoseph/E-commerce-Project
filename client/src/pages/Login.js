@@ -14,11 +14,11 @@ import { useNavigate } from 'react-router-dom';
 const schema = yup.object().shape({
   username: yup
     .string()
-    .min(5, '* invalid username ')
+    .min(6, '* invalid username ')
     .required('* username is required'),
   password: yup
     .string()
-    .min(5, '* invalid Password ')
+    .min(6, '* invalid Password ')
     .required('* Password is required')
 });
 function Login() {
@@ -48,7 +48,7 @@ function Login() {
         })
     } catch (error) {
       console.log('Login Failed!')
-      toast.error('login failed', {
+      toast.error('Invalid username and password', {
         position: toast.POSITION.TOP_CENTER
       });
       console.log(error);
