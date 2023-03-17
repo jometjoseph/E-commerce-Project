@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "../components/Redux/cartslice";
 import 'react-toastify/dist/ReactToastify.css';
-import { Rating } from "@mui/material";
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import DrawerAppBar from "../components/NavBar";
@@ -18,7 +17,7 @@ function Addtocart() {
     console.log("it's working ")
   }
   const totalAmount = result.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0);
-  const shippingFee = Math.floor(totalAmount * 0.05);
+  const shippingFee = Math.floor(totalAmount * 0.25);
   const totalPrice = totalAmount + shippingFee;
   const remove = (index) => {
     dispatch(removeItem(index));
@@ -43,7 +42,7 @@ function Addtocart() {
                       <div class="p-5">
                         <div class="d-flex justify-content-between align-items-center mb-5">
                           <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                          <h6 class="mb-0 text-muted"></h6>
+                          <h6 class="mb-0 text-muted">Selected Items </h6>
                         </div>
                         <hr class="my-4" />
                         {result && result.map((products, index) =>
