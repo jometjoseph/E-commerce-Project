@@ -49,7 +49,7 @@ function Login() {
         })
   } catch (error) {
       console.log('Login Failed!')
-      toast.error('login failed', {
+      toast.error('Invalid username and password', {
         position: toast.POSITION.TOP_CENTER
       });
       console.log(error);
